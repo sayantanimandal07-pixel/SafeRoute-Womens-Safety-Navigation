@@ -1,138 +1,29 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+import type { Metadata } from "next";
+import "./globals.css";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
 
-    <title>SafeRoute - Smart Safety Navigation</title>
-    <link
-        rel="stylesheet"
-        href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
-    >
-    <link rel="stylesheet" href="style.css">
-</head>
+export const metadata: Metadata = {
+  title: "SheSafe — Women Safety Platform",
+  description: "Instant SOS, community help, and safety resources for women.",
+  manifest: "/manifest.json",
+};
 
-<body>
-
-    <nav>
-        <div class="logo">
-            🛡️ SafeRoute
-        </div>
-
-        <div class="nav-links">
-            <a href="#map">Map</a>
-            <a href="#report">Report</a>
-            <a href="#about">About</a>
-        </div>
-    </nav>
-
-
-    <!-- Hero Section -->
-    <section class="hero">
-
-        <h1>Your Safety. Your Route.</h1>
-
-        <p>
-            Discover safer routes and report unsafe locations
-            to help build a safer community.
-        </p>
-
-        <button id="locationBtn">
-            📍 Find My Location
-        </button>
-
-    </section>
-
-
-    <!-- Safety Statistics -->
-    <section class="stats">
-
-        <div class="card">
-            <h2 id="safetyScore">100</h2>
-            <p>Safety Score</p>
-        </div>
-
-        <div class="card">
-            <h2 id="reportCount">0</h2>
-            <p>Unsafe Locations Reported</p>
-        </div>
-
-        <div class="card">
-            <h2>24/7</h2>
-            <p>Emergency Awareness</p>
-        </div>
-
-    </section>
-
-
-    <!-- Map Section -->
-    <section id="mapSection">
-
-        <h2>Safety Map</h2>
-
-        <p>
-            Click anywhere on the map to report an unsafe location.
-        </p>
-
-        <div id="map"></div>
-
-    </section>
-
-
-    <!-- Report Section -->
-    <section id="report">
-
-        <h2>Report Unsafe Location</h2>
-
-        <p id="selectedLocation">
-            Click a location on the map first.
-        </p>
-
-        <select id="severity">
-
-            <option value="low">
-                Low Risk
-            </option>
-
-            <option value="medium">
-                Medium Risk
-            </option>
-
-            <option value="high">
-                High Risk
-            </option>
-
-        </select>
-
-        <button id="reportBtn">
-            🚨 Submit Report
-        </button>
-
-    </section>
-
-
-    <!-- About -->
-    <section id="about">
-
-        <h2>About SafeRoute</h2>
-
-        <p>
-            SafeRoute is a community-driven safety navigation system.
-            Users can identify unsafe locations and help others make
-            safer travel decisions.
-        </p>
-
-    </section>
-
-
-    <footer>
-        <p>© 2026 SafeRoute | Built for a Safer Future 🛡️</p>
-    </footer>
-    
-    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-
-    <!-- Your JavaScript -->
-    <script src="script.js"></script>
-
-</body>
-</html>
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  return (
+    <html lang="en">
+      <head>
+        <link rel="icon" href="/favicon.ico" />
+      </head>
+      <body className="bg-slate-50 text-slate-900">
+        <Header />
+        <main className="min-h-screen">{children}</main>
+        <Footer />
+      </body>
+    </html>
+  );
+}
