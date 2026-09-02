@@ -75,8 +75,6 @@ document
     });
 
 
-// Select Location on Map
-
 map.on("click", function (event) {
 
     selectedLat = event.latlng.lat;
